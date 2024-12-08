@@ -15,6 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="dest\HALLTCKT2024-V2.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="dest\VJS ADMITCARD.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

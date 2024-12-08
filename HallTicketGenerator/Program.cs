@@ -16,7 +16,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             DataTable studentData = GetExcelData();
             var groupedData = from r in studentData.Rows.OfType<DataRow>()
-                              group r by r["SCHOOL NAME"] into g
+                              group r by r["SCHOOL"] into g
                               select new { School = g.Key, Data = g };
             string schoolName = "";
 
@@ -24,7 +24,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             {
                 if (!string.IsNullOrWhiteSpace(schoolData.School.ToString()))
                 {
-                    PdfDocument PDFDoc = PdfReader.Open(@"dest\VJS ADMITCARD.pdf", PdfDocumentOpenMode.Import);
+                    PdfDocument PDFDoc = PdfReader.Open(@"dest\HALLTCKT2024-V2.pdf", PdfDocumentOpenMode.Import);
                     PdfDocument PDFNewDoc = new PdfDocument();
                     foreach (DataRow row in schoolData.Data)
                     {
@@ -40,8 +40,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
                             gfx.DrawString(row[6].ToString(), font, XBrushes.Black, new XRect(165, 183, 10, 10), XStringFormats.CenterLeft);
                             gfx.DrawString(row[4].ToString(), font, XBrushes.Black, new XRect(165, 202, 10, 10), XStringFormats.CenterLeft);
                             gfx.DrawString(row[5].ToString(), font, XBrushes.Black, new XRect(165, 222, 10, 10), XStringFormats.CenterLeft);
-                        }
-                    }
+						}
+					}
                     PDFNewDoc.Save(@"dest\AdmitCard_" + schoolName + ".pdf");
                 }
 
