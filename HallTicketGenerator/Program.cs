@@ -17,12 +17,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
         public static double width = 3;
         public static int NumHallTicketPage = 2;
 
-        public static int[,,] PageCoord = new int[3, 8, 2] { { { 125, 130 }, { 135, 153 }, { 410, 153 }, { 410,105},
-                                                                {410,115},{410,130},{120,105},{96,213}},
+        public static int[,,] PageCoord = new int[3, 9, 2] { { { 125, 130 }, { 135, 153 }, { 410, 153 }, { 410,105},
+                                                                {410,115},{410,130},{120,105},{96,213}, { 115, 105} },
                                                               { { 125, 413 }, { 135, 436 }, { 410, 436 }, { 410,388},
-                                                                {410,398},{410,413},{120,388},{96,496}},
+                                                                {410,398},{410,413},{120,388},{96,496}, { 115, 388} },
                                                                { { 125, 696 }, { 135, 719 }, { 410, 719 }, { 410,671},
-                                                                {410,681},{410,696},{120,671},{96,779}}};
+                                                                {410,681},{410,696},{120,671},{96,779}, { 115, 671}}};
         static void Main(string[] args)
         {
             // System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -71,12 +71,27 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         MandalName = row[6].ToString();
                         if (!string.IsNullOrWhiteSpace(row[0].ToString()))
                         {
-                            gfx.DrawString(row[7].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex,0,0], PageCoord[HallTicketIndex, 0, 1], height, width), XStringFormats.CenterLeft);
-                            gfx.DrawString(row[1].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 1, 0], PageCoord[HallTicketIndex, 1, 1], height, width), XStringFormats.CenterLeft);
-                            gfx.DrawString(row[2].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex,2, 0], PageCoord[HallTicketIndex, 2, 1], height, width), XStringFormats.CenterLeft);
-                            gfx.DrawString(row[6].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 3, 0], PageCoord[HallTicketIndex, 3, 1], height, width), XStringFormats.CenterLeft);
-                            gfx.DrawString(row[4].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 5, 0], PageCoord[HallTicketIndex, 5, 1], height, width), XStringFormats.CenterLeft);
-                            gfx.DrawString(row[5].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 6, 0], PageCoord[HallTicketIndex, 7, 1], height, width), XStringFormats.CenterLeft);
+                            //Hallticket
+							gfx.DrawString(row[12].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 8, 0], PageCoord[HallTicketIndex, 8, 1], height, width), XStringFormats.CenterLeft);
+                            //Class
+                            gfx.DrawString(row[3].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 3, 0], PageCoord[HallTicketIndex, 3, 1], height, width), XStringFormats.CenterLeft);
+							//StudentName
+							gfx.DrawString(row[0].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 0, 0], PageCoord[HallTicketIndex, 0, 1], height, width), XStringFormats.CenterLeft);
+							//Exam centre
+							gfx.DrawString(row[11].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 6, 0], PageCoord[HallTicketIndex, 7, 1], height, width), XStringFormats.CenterLeft);
+							//Mobile Number
+							gfx.DrawString(row[5].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 5, 0], PageCoord[HallTicketIndex, 5, 1], height, width), XStringFormats.CenterLeft);
+							//Parent/Guardian Name
+							gfx.DrawString(row[1].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 1, 0], PageCoord[HallTicketIndex, 1, 1], height, width), XStringFormats.CenterLeft);
+							//School Name
+							gfx.DrawString(row[7].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 2, 0], PageCoord[HallTicketIndex, 2, 1], height, width), XStringFormats.CenterLeft);
+
+
+							//gfx.DrawString(row[7].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex,0,0], PageCoord[HallTicketIndex, 0, 1], height, width), XStringFormats.CenterLeft);
+							//gfx.DrawString(row[1].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 1, 0], PageCoord[HallTicketIndex, 1, 1], height, width), XStringFormats.CenterLeft);
+							//gfx.DrawString(row[2].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex,2, 0], PageCoord[HallTicketIndex, 2, 1], height, width), XStringFormats.CenterLeft);
+                            //gfx.DrawString(row[4].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 5, 0], PageCoord[HallTicketIndex, 5, 1], height, width), XStringFormats.CenterLeft);
+                            //gfx.DrawString(row[5].ToString(), font, XBrushes.Black, new XRect(PageCoord[HallTicketIndex, 6, 0], PageCoord[HallTicketIndex, 7, 1], height, width), XStringFormats.CenterLeft);
                         }
                         HallTicketIndex++;
                     }
@@ -97,7 +112,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         private static DataTable GetExcelData()
         {
             DataTable dt = new DataTable();
-            string con = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=..\..\src\Students Master data.xlsx;Extended Properties='Excel 12.0;HDR=yes'";
+            string con = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=src\Students Master data.xlsx;Extended Properties='Excel 12.0;HDR=yes'";
             using (OleDbConnection connection = new OleDbConnection(con))
             {
 
