@@ -18,11 +18,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
         public static int NumHallTicketPage = 2;
 
         public static int[,,] PageCoord = new int[3, 9, 2] { { { 125, 130 }, { 135, 153 }, { 410, 153 }, { 410,105},
-                                                                {410,115},{410,130},{120,105},{96,213}, { 115, 105} },
+                                                                {410,115},{410,130},{100,105},{96,213}, { 115, 105} },
                                                               { { 125, 413 }, { 135, 436 }, { 410, 436 }, { 410,388},
-                                                                {410,398},{410,413},{120,388},{96,496}, { 115, 388} },
+                                                                {410,398},{410,413},{100,388},{96,496}, { 115, 388} },
                                                                { { 125, 696 }, { 135, 719 }, { 410, 719 }, { 410,671},
-                                                                {410,681},{410,696},{120,671},{96,779}, { 115, 671}}};
+                                                                {410,681},{410,696},{100,671},{96,779}, { 115, 671}}};
         static void Main(string[] args)
         {
             // System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
